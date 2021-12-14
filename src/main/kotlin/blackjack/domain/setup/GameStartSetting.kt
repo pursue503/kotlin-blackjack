@@ -1,20 +1,27 @@
 package blackjack.domain.setup
 
 import blackjack.domain.deck.CardDeck
+import blackjack.domain.entity.Dealer
+import blackjack.domain.entity.Gamer
 import blackjack.domain.entity.Player
 
 object GameStartSetting {
 
-    fun setGame(playerNames: List<String>, cardDeck: CardDeck = CardDeck()): List<Player> {
+    fun setGame(playerNames: List<String>, cardDeck: CardDeck = CardDeck()): List<Gamer> {
 
-        val players = mutableListOf<Player>()
+        val gamers = mutableListOf<Gamer>()
 
         for (name in playerNames) {
 
             val cards = mutableListOf(cardDeck.draw(), cardDeck.draw())
 
-            players.add(Player(name, cards))
+            gamers.add(Player(name, cards))
         }
-        return players
+
+        val dealerCard = mutableListOf(cardDeck.draw(), cardDeck.draw())
+
+        gamers.add(Dealer(dealerCard))
+
+        return gamers
     }
 }

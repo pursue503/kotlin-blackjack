@@ -1,6 +1,6 @@
 package blackjack.view
 
-import blackjack.domain.entity.Player
+import blackjack.domain.entity.Gamer
 
 object OutputView {
 
@@ -8,17 +8,17 @@ object OutputView {
     private const val CARD = "카드"
     private const val RESULT = "결과"
 
-    fun printSettingPlayer(players: List<Player>) {
+    fun printSettingPlayer(players: List<Gamer>) {
         println("$players $SET_PLAY_MESSAGE")
         println()
         players.forEach { println("${it.name} $CARD : ${it.cards}") }
     }
 
-    fun printPlayCard(player: Player) {
+    fun printPlayCard(player: Gamer) {
         println("${player.name} $CARD : ${player.cards}")
     }
 
-    fun gameEnd(players: List<Player>) {
+    fun gameEnd(players: List<Gamer>) {
         players.forEach { println("${it.name} $CARD: ${it.cards} - $RESULT: ${it.scoreCalculation()}") }
     }
 }
