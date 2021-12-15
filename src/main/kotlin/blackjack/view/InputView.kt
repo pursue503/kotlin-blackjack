@@ -14,7 +14,7 @@ object InputView {
         return readLine()?.split(",") ?: throw BizException(InputError.NOT_INPUT)
     }
 
-    fun hitsAndStay(name: String): Boolean {
+    fun hitsOrStay(name: String): Boolean {
         println("$name $HITS_MESSAGE")
         return (HITS_SIGN == readLine())
     }

@@ -7,10 +7,11 @@ interface Gamer {
     val name: String
     val cards: MutableList<Card>
 
-    fun hits(card: Card)
+    fun hits(callback: () -> Card)
+
+    fun isHits(): Boolean
 
     fun scoreCalculation(): Int {
-
         var score = this
             .cards
             .sumOf { it.denomination.cardNumber }

@@ -23,24 +23,20 @@ class Controller(
     }
 
     fun playing(player: Gamer) {
-        while (InputView.hitsAndStay(player.name) && player.scoreCalculation() < BLACK_JACK_SCORE) {
-            player.hits(cardDeck.draw())
+        while (InputView.hitsOrStay(player.name) && player.isHits()) { // y card < 21
+            player.hits(cardDeck::draw)
             OutputView.printPlayCard(player)
         }
     }
 
     fun dealerHits(dealer: Gamer) {
-        while (dealer.scoreCalculation() <= 16) {
-            println("딜러는 16 이하라 카드를 한장 더받았습니다")
-            dealer.hits(cardDeck.draw())
+        while (dealer.isHits()) {
+            dealer.hits(cardDeck::draw)
+            OutputView.dealerDrawMessage()
         }
     }
 
     fun gameEnd(gamePlayUsers: GamePlayUsers) {
         OutputView.gameEnd(gamePlayUsers.playGamers)
-    }
-
-    companion object {
-        private const val BLACK_JACK_SCORE = 21
     }
 }

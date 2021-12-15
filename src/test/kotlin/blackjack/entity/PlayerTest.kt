@@ -44,7 +44,7 @@ class PlayerTest {
         val drawCard = Card(Suit.CLUB, Denomination.FIVE)
 
         // then
-        player.hits(drawCard)
+        player.hits { drawCard }
 
         assertThat(player.cards.size).isEqualTo(beforeCardSize + 1)
     }
